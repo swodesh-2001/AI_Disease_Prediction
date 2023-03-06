@@ -30,14 +30,14 @@ class ChatbotApp(tk.Tk):
         self.text_color = "#9ea3a8"
         self.accent_color = "#3E9FFF"
         self.title_color = "#0080ff"
-         
+
         self.title_font = ("Helvetica", 20, "bold")
         self.subtitle_font = ("Helvetica", 12, "bold")
         self.text_font = ("Helvetica", 12)
 
 
 
-        
+
         self.title_label = tk.Label(self, text="Mero Swasthya Chatbot", fg=self.title_color, font=self.title_font, bg=self.bg_color)
         self.title_label.pack(pady=20)
 
@@ -45,7 +45,7 @@ class ChatbotApp(tk.Tk):
         self.chat_log = tk.Text(self, fg=self.text_color, bg=self.chat_bg_color, font=self.text_font, height=15, width=50, highlightthickness=0, borderwidth=0)
         self.chat_log.pack(padx=20, pady=20)
         self.welcome_message = "Hello,  I'm Mero Swasthya Chatbot. How can I assist you?"
-        
+
         self.display_chatbot_response(self.welcome_message)
 
         self.user_input = tk.Entry(self, fg=self.text_color, bg=self.chat_bg_color, font=self.text_font,highlightthickness=0, borderwidth=0)
@@ -74,13 +74,13 @@ class ChatbotApp(tk.Tk):
                 label.append(1)
             else :
                 label.append(0)
-        return label    
-    
+        return label
+
     def predict_my_disease(self,message):
         print(message)
-        extracted_feature = feature_label(message,symptoms_list)
+        extracted_feature = self.feature_label(message,symptoms_list)
         to_predict = extracted_feature
-        to_predict = np.expand_dims(to_predict, axis=0) 
+        to_predict = np.expand_dims(to_predict, axis=0)
         predicted = self.model.predict(to_predict)
         if any(predicted[0]) != 1 :
             return("Can you give me more information")
@@ -97,12 +97,12 @@ class ChatbotApp(tk.Tk):
             precaution2 = disease_row['Precaution_2'].values[0]
             precaution3 = disease_row['Precaution_3'].values[0]
             precaution4 = disease_row['Precaution_4'].values[0]
-            
-            return_message += "\n"+ str(precaution1)  
-            return_message += "\n"+ str(precaution2) 
-            return_message += "\n"+ str(precaution3) 
-            return_message += "\n"+ str(precaution4) 
-            return(return_message)    
+
+            return_message += "\n"+ str(precaution1)
+            return_message += "\n"+ str(precaution2)
+            return_message += "\n"+ str(precaution3)
+            return_message += "\n"+ str(precaution4)
+            return(return_message)
         
     def handle_user_input(self, event):
         user_input_text = self.user_input.get().strip()
@@ -117,13 +117,13 @@ class ChatbotApp(tk.Tk):
             if len(self.symptoms) == 0:
                 self.symptoms = self.find_similar_words(response_text,symptoms_list)
                 message = "Can you please select the symptoms that you have and type out the respective index \n"
-                for i in range(0,len(self.symptoms)) :    
+                for i in range(0,len(self.symptoms)) :
                      message += "\n" + str(i+1) + ". " + self.symptoms[i]
                 chatbot_response_text = message
                 flag_temp = False
                 if len(self.symptoms) == 0 :
                     chatbot_response_text = "Hello, can you please provide me with symptoms of your disease"
-                    
+
 
             if len(self.symptoms) != 0 and flag_temp:
                 index_list = re.findall('\d+', response_text)
@@ -131,18 +131,18 @@ class ChatbotApp(tk.Tk):
                 temp = []
                 for i in index_list:
                     temp.append(self.symptoms[i-1])
-                                
-                self.symptoms = temp  
+
+                self.symptoms = temp
                 symptom_string = ""
                 for i in self.symptoms:
                     symptom_string += " " + str(i)
-                    
+
                 chatbot_response_text = self.predict_my_disease(str(symptom_string))
-                self.symptoms = []   
+                self.symptoms = []
 
         else :
             chatbot_response_text = response_text.upper()
-            
+
 
         def display_letter_by_letter(index=0):
 
