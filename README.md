@@ -10,6 +10,7 @@ We hope that our Disease Prediction App can help individuals take a proactive ap
 
 #Link to executable
 https://drive.google.com/file/d/1eaSriUny1uy47XDD8dARLfEGZDRMfNkX/view?usp=sharing
+
 Open this executable file
 ![image](https://user-images.githubusercontent.com/70265297/235104106-cbde4c61-793d-4e9e-930d-fe6bb6e5a067.png)
 
