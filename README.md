@@ -3,10 +3,6 @@
 
 Welcome to the Disease Prediction App, a desktop application built using the Tkinter framework in Python. This application utilizes machine learning algorithms to predict the likelihood of heart disease and breast cancer, as well as classify general diseases based on a set of input parameters.
 
-With the growing prevalence of chronic diseases, early detection and prevention have become crucial in ensuring better health outcomes. Our Disease Prediction App provides users with a convenient and user-friendly tool to assess their risk of developing heart disease or breast cancer, two of the most common diseases worldwide.
-
-In addition to specific disease prediction, the app also offers a general disease classification feature that allows users to input a range of symptoms and receive a list of potential diseases that may be causing those symptoms.
-
 Our application uses a trained machine learning model to make predictions and classifications based on user input. The model was trained on a large dataset of medical records, using various classification and regression techniques. The user interface is simple and intuitive, allowing users to input their data and receive results with ease.
 
 We hope that our Disease Prediction App can help individuals take a proactive approach to their health and lead to earlier detection and prevention of diseases. We welcome feedback and contributions from the open-source community to improve the accuracy and usability of the app.
